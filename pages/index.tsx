@@ -2,20 +2,14 @@ import Image from "next/image";
 import {PageWrapper} from "components/PageWrapper/PageWrapper";
 import {NextPageWithLayout} from "./_app";
 import {getLayout} from "components/Layout/BaseLayout/BaseLayout";
-import {useRouter} from "next/router";
-import {en} from "locales/en";
-import {ru} from "locales/ru";
-import test from "pages/test";
+import {useTranslation} from "hooks/useTranslation";
 
 const Home: NextPageWithLayout = () => {
-    const router = useRouter()
+     const {t} = useTranslation()
 
-    const t = router.locale === "en" ? en : ru;
-
-
-    console.log("router.locales: ", router.locales);
-    console.log("router.locale: ", router.locale);
-    console.log("router.defaultLocale: ", router.defaultLocale);
+    // console.log("router.locales: ", router.locales);
+    // console.log("router.locale: ", router.locale);
+    // console.log("router.defaultLocale: ", router.defaultLocale);
 
     return (
         <PageWrapper>
