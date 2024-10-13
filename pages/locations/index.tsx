@@ -4,10 +4,8 @@ import { LocationType, ResponseType } from "assets/api/rick-and-morty-api";
 import { QueryClient } from "@tanstack/query-core";
 import { Card } from "components/Card/Card";
 import { NextPageWithLayout } from "../_app";
-import { getLayout } from "components/Layout/BaseLayout/BaseLayout";
-import {useRouter} from "next/router";
-import {en} from "locales/en";
-import {ru} from "locales/ru";
+import { getLayout } from "components/Layout/BaseLayout/BaseLayout";;
+import {useTranslation} from "hooks/useTranslation";
 
 const getLocations = () => {
   return fetch("https://rickandmortyapi.com/api/location", { method: "GET" }).then((res) => res.json());
@@ -26,9 +24,7 @@ export const getStaticProps = async () => {
 };
 
 const Locations: NextPageWithLayout = () => {
-
-  const router = useRouter()
-  const t = router.locale === "en" ? en : ru;
+  const {t} = useTranslation()
 
   const { data: locations } = useQuery<ResponseType<LocationType>>(["locations"], getLocations);
 

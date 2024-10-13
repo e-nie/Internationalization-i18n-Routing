@@ -8,4 +8,9 @@ export const en: LocaleType = {
     locationsPage: {
         title: "Location page",
     },
+    characterPage: {
+        getDescription(name: string, species: string) {
+            return `The character ${name} belongs to the variety ${species}`;
+        },
+    },
 };

@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { CharacterCard } from "components/Card/CharacterCard/CharacterCard";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import {useTranslation} from "hooks/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const characters = await API.rickAndMorty.getCharacters();
@@ -48,6 +49,7 @@ type PropsType = {
 const Character: NextPageWithLayout<PropsType> = ({ character }) => {
   const router = useRouter();
   const id = router.query.id;
+  const {t} = useTranslation()
 
   const navigateToCharacters = () => router.push("/characters");
 
@@ -58,6 +60,7 @@ const Character: NextPageWithLayout<PropsType> = ({ character }) => {
         <div>
           <b>id: {id}</b>
           <CharacterCard key={character.id} character={character} />
+          <p>{t.characterPage.getDescription(character.name, character.species)}</p>
         </div>
       </Container>
     </PageWrapper>

@@ -6,6 +6,11 @@ export const ru = {
     locationsPage: {
         title: "Страница с локациями",
     },
+    characterPage: {
+        getDescription(name: string, species: string) {
+            return `Персонаж ${name} относится к разновидности ${species}`;
+        },
+    }
 };
 
 export type LocaleType = typeof ru;
